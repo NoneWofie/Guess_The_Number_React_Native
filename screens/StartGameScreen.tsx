@@ -4,7 +4,11 @@ import { useState } from "react";
 
 import PrimaryButton from "../components/PrimaryButton";
 
-const StartGameScreen = () => {
+interface Props {
+	onPickNumber: (chosenNumber: number) => void;
+}
+
+const StartGameScreen: React.FC<Props> = props => {
 	const [enteredNumber, setEnteredNumber] = useState("");
 
 	function numberInputHandler(enteredText: string) {
@@ -32,7 +36,7 @@ const StartGameScreen = () => {
 			);
 			return;
 		}
-		console.log(chosenNumber);
+		props.onPickNumber(chosenNumber);
 	}
 
 	return (
